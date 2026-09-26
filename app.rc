@@ -1,0 +1,34 @@
+// 应用图标与版本信息（用 zig rc / windres / rc.exe 编译后参与链接）
+//   zig rc app.rc app.res
+
+1 ICON "assets/game2048.ico"
+
+// 资源 ID 必须写成 1（不要写 VS_VERSION_INFO —— 那是 winver.h 里的宏，
+// 没有 include 头文件时会被 rc 当成字符串名，Windows 就查不到版本信息了）
+1 VERSIONINFO
+FILEVERSION     1,3,0,0
+PRODUCTVERSION  1,3,0,0
+FILEFLAGSMASK   0x3fL
+FILEFLAGS       0x0L
+FILEOS          0x40004L
+FILETYPE        0x1L
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      "WorkBuddy"
+            VALUE "FileDescription",  "2048 (Win32 + Snake AI)"
+            VALUE "FileVersion",      "1.3.0.0"
+            VALUE "InternalName",     "game2048"
+            VALUE "OriginalFilename", "game2048.exe"
+            VALUE "ProductName",      "2048"
+            VALUE "ProductVersion",   "1.3.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
